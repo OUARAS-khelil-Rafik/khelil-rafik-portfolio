@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
-import { Mail, MapPin, Phone, Send, CheckCircle } from 'lucide-react';
+import { Mail, MapPin, Phone, Send, Loader } from 'lucide-react';
 import { EMAIL_ADDRESS, EMAIL_ADDRESS_2 } from '../constants';
 
 const Contact = () => {
@@ -88,20 +88,56 @@ const Contact = () => {
               {formState === 'success' ? (
                 <div className="h-full flex flex-col items-center justify-center text-center py-10">
                     <motion.div 
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white mb-6"
+                        initial={{ scale: 0, y: -50 }}
+                        animate={{ scale: 1, y: 0 }}
+                        transition={{
+                            type: "spring",
+                            stiffness: 200,
+                            damping: 15
+                        }}
+                        className="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white mb-6 shadow-lg shadow-green-500/30"
                     >
-                        <CheckCircle size={32} />
+                        <motion.svg
+                            width="32"
+                            height="32"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="3"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            initial={{ pathLength: 0 }}
+                            animate={{ pathLength: 1 }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                        >
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </motion.svg>
                     </motion.div>
-                    <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
-                    <p className="text-slate-400">Thank you for reaching out. I'll get back to you shortly.</p>
-                    <button 
-                        onClick={() => setFormState('idle')} 
-                        className="mt-8 text-primary hover:text-white transition-colors"
+                    <motion.h3 
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 }}
+                        className="text-2xl font-bold text-white mb-2"
                     >
-                        Send another message
-                    </button>
+                        Message Sent!
+                    </motion.h3>
+                    <motion.p 
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4 }}
+                        className="text-slate-400"
+                    >
+                        Thank you for reaching out. I'll get back to you shortly.
+                    </motion.p>
+                    <motion.button 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5 }}
+                        onClick={() => setFormState('idle')} 
+                        className="mt-8 text-primary hover:text-blue-400 transition-colors font-medium"
+                    >
+                        ↓ Send another message
+                    </motion.button>
                 </div>
               ) : (
                 <form className="space-y-8" onSubmit={handleSubmit}>
@@ -120,20 +156,51 @@ const Contact = () => {
                         <span className="absolute bottom-1.5 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-focus-within:w-full group-hover:w-full"></span>
                     </div>
 
-                    <button
-                        type="submit"
-                        disabled={formState === 'submitting'}
-                        className="w-full bg-primary hover:bg-blue-600 text-white font-bold py-4 rounded-xl transition-all flex items-center justify-center space-x-2 shadow-lg hover:shadow-blue-600/20 disabled:opacity-70 disabled:cursor-not-allowed"
-                    >
-                        {formState === 'submitting' ? (
-                             <span className="animate-pulse">Sending...</span>
-                        ) : (
-                            <>
-                                <span>{content.contact.sendButton}</span>
-                                <Send size={18} />
-                            </>
-                        )}
-                    </button>
+                    <div className="flex justify-center">
+                        <motion.button
+                            type="submit"
+                            disabled={formState === 'submitting'}
+                            animate={{
+                                width: formState === 'submitting' ? 56 : '100%',
+                                borderRadius: formState === 'submitting' ? 9999 : 12
+                            }}
+                            transition={{
+                                duration: 0.4,
+                                ease: "easeInOut"
+                            }}
+                            className="relative bg-primary hover:bg-blue-600 text-white font-bold py-4 transition-all flex items-center justify-center shadow-lg hover:shadow-blue-600/20 disabled:opacity-70 disabled:cursor-not-allowed overflow-hidden"
+                            style={{
+                                maxWidth: formState === 'submitting' ? '56px' : '100%'
+                            }}
+                        >
+                            {formState === 'idle' && (
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="flex items-center justify-center space-x-2 w-full"
+                                >
+                                    <span>{content.contact.sendButton}</span>
+                                    <Send size={18} />
+                                </motion.div>
+                            )}
+                            
+                            {formState === 'submitting' && (
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ duration: 0.3 }}
+                                >
+                                    <motion.div
+                                        animate={{ rotate: 360 }}
+                                        transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                                    >
+                                        <Loader size={24} />
+                                    </motion.div>
+                                </motion.div>
+                            )}
+                        </motion.button>
+                    </div>
                 </form>
               )}
             </motion.div>

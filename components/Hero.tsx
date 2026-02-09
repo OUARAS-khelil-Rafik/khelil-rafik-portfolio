@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
-import { ArrowRight, Download, Linkedin, Github, Mail } from 'lucide-react';
+import { ArrowRight, Download } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { GITHUB_USERNAME } from '../constants';
+import SocialIcons from './SocialIcons';
 
 const Hero = () => {
   const { content } = useLanguage();
@@ -151,24 +152,9 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.2 }}
-            className="mt-16 flex items-center space-x-8"
+            className="mt-16"
           >
-            {[
-              { icon: Github, href: `https://github.com/${GITHUB_USERNAME}` },
-              { icon: Linkedin, href: "https://www.linkedin.com" },
-              { icon: Mail, href: "mailto:kikoouaras@gmail.com" }
-            ].map((item, index) => (
-              <motion.a
-                key={index}
-                href={item.href}
-                target={item.href.startsWith('http') ? "_blank" : "_self"}
-                rel="noreferrer"
-                whileHover={{ y: -5, color: '#3b82f6' }}
-                className="text-slate-500 transition-colors"
-              >
-                <item.icon size={28} />
-              </motion.a>
-            ))}
+            <SocialIcons />
           </motion.div>
         </div>
       </div>
