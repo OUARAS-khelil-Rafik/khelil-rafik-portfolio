@@ -1,9 +1,75 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, Variants } from 'framer-motion';
 import { ArrowRight, Download } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { GITHUB_USERNAME } from '../constants';
 import SocialIcons from './SocialIcons';
+
+const Typewriter = ({ text, delay = 0, speed = 50, className = "" }: { text: string, delay?: number, speed?: number, className?: string }) => {
+  const [displayText, setDisplayText] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+    let currentIndex = 0;
+    let isDeleting = false;
+    // Start delay flag
+    let hasStarted = false;
+
+    const tick = () => {
+      // Typing phase
+      if (!isDeleting) {
+        if (currentIndex <= text.length) {
+          setDisplayText(text.substring(0, currentIndex));
+          currentIndex++;
+          setIsTyping(true);
+          timeout = setTimeout(tick, speed);
+        } else {
+          // Finished typing, wait 3 seconds then start deleting
+          setIsTyping(false);
+          isDeleting = true;
+          timeout = setTimeout(tick, 3000); // 3 seconds wait
+        }
+      } 
+      // Deleting phase
+      else {
+        if (currentIndex >= 0) {
+          setDisplayText(text.substring(0, currentIndex));
+          currentIndex--;
+          setIsTyping(true);
+          timeout = setTimeout(tick, 30); // Faster delete speed
+        } else {
+          // Finished deleting, restart typing
+          isDeleting = false;
+          currentIndex = 0;
+          setIsTyping(false);
+          timeout = setTimeout(tick, 500); // Small pause before retyping
+        }
+      }
+    };
+
+    const startTimeout = setTimeout(() => {
+      hasStarted = true;
+      tick();
+    }, delay);
+
+    return () => {
+      clearTimeout(startTimeout);
+      clearTimeout(timeout);
+    };
+  }, [text, delay, speed]);
+
+  return (
+    <span className={className}>
+      {displayText}
+      <motion.span 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className={`inline-block w-[2px] h-[1em] bg-slate-200 ml-1 align-middle ${!isTyping ? 'animate-pulse' : ''}`}
+      />
+    </span>
+  );
+};
 
 const Hero = () => {
   const { content } = useLanguage();
@@ -97,18 +163,18 @@ const Hero = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 1 }}
             className="mb-10"
           >
             <h2 className="text-2xl md:text-4xl font-medium text-slate-400 font-display">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 animate-gradient-x">
-                {content.hero.role}
+                 {content.hero.role}
               </span>
             </h2>
-            <p className="text-xl md:text-2xl text-slate-500 mt-2">
-              {content.hero.subrole}
+            <p className="text-xl md:text-2xl text-slate-500 mt-2 min-h-[1.2em]">
+               <Typewriter text={content.hero.subrole} delay={1500} />
             </p>
           </motion.div>
 
