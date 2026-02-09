@@ -72,7 +72,7 @@ const Typewriter = ({ text, delay = 0, speed = 50, className = "" }: { text: str
 };
 
 const Hero = () => {
-  const { content } = useLanguage();
+  const { content, language } = useLanguage();
 
   const letterContainer: Variants = {
     hidden: { opacity: 0 },
@@ -204,7 +204,8 @@ const Hero = () => {
             </motion.a>
             
             <motion.a
-              href="#"
+              href={language === 'en' ? "/CV/CV EN (OUARAS Khelil Rafik).pdf" : "/CV/CV FR (OUARAS Khelil Rafik).pdf"}
+              download
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-slate-800/50 backdrop-blur-sm text-white rounded-full font-bold text-lg transition-all flex items-center justify-center space-x-2 border border-slate-700 hover:bg-slate-700 hover:border-slate-600"

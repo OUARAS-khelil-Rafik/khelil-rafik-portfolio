@@ -44,11 +44,18 @@ const About = () => {
               </div>
             </div>
 
-            <div className="md:col-span-2 relative">
-              <div className="relative z-10 w-full aspect-[4/5] rounded-2xl overflow-hidden bg-slate-800">
-                <img src="/profile.jpeg" alt="Profile" className="object-cover w-full h-full" />
+            <div className="md:col-span-2 relative flex justify-center md:justify-end items-start px-4 md:px-0">
+              <div className="relative w-full max-w-[300px] group">
+                <div className="relative z-10 w-full aspect-[3/4] rounded-2xl overflow-hidden bg-slate-800 shadow-2xl">
+                  <img 
+                    src="/profile.jpeg" 
+                    alt="Profile" 
+                    className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                </div>
+                <div className="absolute top-5 -right-5 w-full h-full border-2 border-primary rounded-2xl -z-0 hidden md:block transition-all duration-300 group-hover:top-3 group-hover:-right-3" />
               </div>
-              <div className="absolute top-4 -right-4 w-full h-full border-2 border-primary rounded-2xl -z-0 hidden md:block" />
             </div>
           </div>
         </motion.div>

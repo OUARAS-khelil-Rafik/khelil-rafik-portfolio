@@ -23,7 +23,7 @@ export const CONTENT: Record<string, ContentData> = {
     },
     about: {
       title: "About Me",
-      content: "I am OUARAS Khelil Rafik, a 22-year-old Master's graduate in Data Science and Analysis. Consistently ranked among the top students, I bridge the gap between rigorous software engineering and creative design. My passion lies in solving real-world problems through data analytics, machine learning, and intuitive web development. I thrive in dynamic environments where I can innovate and deliver impactful solutions.",
+      content: "My name is OUARAS Khelil Rafik, I am 22 years old and hold a Master’s degree in Data Science and Analysis in Computer Science. Consistently ranked among the top students in my program, I have been recognized for academic excellence and have built a strong foundation in software engineering, supported by substantial hands-on experience through real-world projects.\nMy skill set spans multiple programming languages and technologies, with a sharp eye for design and a strong interest in data analytics. I am highly motivated to contribute to innovative, forward-thinking projects and thrive in dynamic, collaborative tech environments where I can grow professionally while delivering impactful solutions.",
     },
     experience: {
       title: "Journey",
@@ -165,7 +165,7 @@ export const CONTENT: Record<string, ContentData> = {
     },
     about: {
       title: "À propos de moi",
-      content: "Je m'appelle OUARAS Khelil Rafik, j'ai 22 ans et je suis titulaire d'un Master en Analyse et Science des Données. Classé major de promotion, je possède une base solide en génie logiciel et une sensibilité particulière pour le design. Ma passion réside dans la résolution de problèmes concrets grâce à l'analyse de données, l'apprentissage automatique et le développement web intuitif.",
+      content: "Je m'appelle OUARAS Khelil Rafik, j'ai 22 ans et je suis titulaire d'un Master en Informatique, spécialité Science et Analyse de Données. Constamment classé parmi les meilleurs de ma promotion, j'ai bâti une solide expertise en génie logiciel, renforcée par une expérience significative sur des projets concrets.\nMes compétences allient maîtrise technique, analyse de données et sensibilité au design. Passionné par l'innovation, je m'épanouis dans des environnements dynamiques et collaboratifs où je peux évoluer professionnellement tout en apportant des solutions à fort impact.",
     },
     experience: {
       title: "Parcours",
