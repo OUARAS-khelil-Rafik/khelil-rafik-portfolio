@@ -1,4 +1,3 @@
-import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { Github, Linkedin, Mail } from 'lucide-react';
 import { GITHUB_USERNAME } from '../constants';

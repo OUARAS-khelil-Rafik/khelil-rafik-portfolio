@@ -1,5 +1,3 @@
-import React from 'react';
-import { motion } from 'framer-motion';
 import { LanguageProvider } from './context/LanguageContext';
 import CustomCursor from './components/CustomCursor';
 import Navbar from './components/Navbar';

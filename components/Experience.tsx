@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { motion, useScroll } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import { Briefcase, GraduationCap, Calendar } from 'lucide-react';
