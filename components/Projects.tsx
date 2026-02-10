@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
+import { useTheme } from '../context/ThemeContext';
 import { fetchProjects } from '../services/githubService';
 import { Project } from '../types';
 import { Github, Star, GitFork, ExternalLink, Code, ArrowRight } from 'lucide-react';
 
-const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
+const ProjectCard = ({ project, index, isDark }: { project: Project; index: number; isDark: boolean }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const x = useMotionValue(0);
@@ -60,34 +61,34 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         href={project.html_url}
         target="_blank"
         rel="noopener noreferrer"
-        className="block h-full bg-card/80 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 transition-colors duration-300 hover:border-primary/50 group relative overflow-hidden"
+        className={`block h-full backdrop-blur-sm border rounded-2xl p-6 transition-colors duration-300 hover:border-primary/50 group relative overflow-hidden ${isDark ? 'bg-card/80 border-slate-800' : 'bg-white/80 border-slate-200 shadow-sm'}`}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
         
         <div className="flex justify-between items-start mb-6">
-          <div className="p-3 bg-slate-800/80 rounded-xl group-hover:text-primary transition-colors ring-1 ring-slate-700 group-hover:ring-primary/50">
+          <div className={`p-3 rounded-xl group-hover:text-primary transition-colors ring-1 ${isDark ? 'bg-slate-800/80 ring-slate-700 group-hover:ring-primary/50' : 'bg-slate-100 ring-slate-200 group-hover:ring-primary/50'}`}>
             <Code size={24} />
           </div>
           <div className="flex gap-2">
-            <span className="p-2 text-slate-500 hover:text-white transition-colors bg-slate-800/50 rounded-full">
+            <span className={`p-2 hover:text-white transition-colors rounded-full ${isDark ? 'text-slate-500 bg-slate-800/50' : 'text-slate-400 bg-slate-100'}`}>
                 <Github size={18} />
             </span>
-            <span className="p-2 text-slate-500 hover:text-primary transition-colors bg-slate-800/50 rounded-full">
+            <span className={`p-2 hover:text-primary transition-colors rounded-full ${isDark ? 'text-slate-500 bg-slate-800/50' : 'text-slate-400 bg-slate-100'}`}>
                 <ExternalLink size={18} />
             </span>
           </div>
         </div>
         
-        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
+        <h3 className={`text-xl font-bold mb-3 group-hover:text-primary transition-colors ${isDark ? 'text-white' : 'text-slate-900'}`}>
           {project.name}
         </h3>
         
-        <p className="text-slate-400 text-sm mb-6 line-clamp-3 leading-relaxed">
+        <p className={`text-sm mb-6 line-clamp-3 leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
           {project.description || "No description provided."}
         </p>
 
-        <div className="flex items-center justify-between text-xs text-slate-500 mt-auto pt-4 border-t border-slate-800/50">
-          <span className="flex items-center px-2 py-1 bg-slate-800 rounded-md">
+        <div className={`flex items-center justify-between text-xs mt-auto pt-4 border-t ${isDark ? 'text-slate-500 border-slate-800/50' : 'text-slate-500 border-slate-200'}`}>
+          <span className={`flex items-center px-2 py-1 rounded-md ${isDark ? 'bg-slate-800' : 'bg-slate-100'}`}>
               <span className="w-2 h-2 rounded-full bg-primary mr-2"></span>
               {project.language || "Code"}
           </span>
@@ -105,6 +106,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
 
 const Projects = () => {
   const { content } = useLanguage();
+  const { isDark } = useTheme();
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -125,7 +127,7 @@ const Projects = () => {
   }, []);
 
   return (
-    <section id="projects" className="py-32 bg-dark relative z-10">
+    <section id="projects" className={`py-32 relative z-10 transition-colors duration-300 ${isDark ? 'bg-dark' : 'bg-light-bg'}`}>
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -137,8 +139,8 @@ const Projects = () => {
             <span className="h-px w-8 bg-primary"></span>
             <span className="text-primary font-medium tracking-wide uppercase text-sm">04.</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold font-display mt-2 mb-4">{content.projects.title}</h2>
-          <p className="text-slate-400 text-lg max-w-xl">{content.projects.subtitle}</p>
+          <h2 className={`text-4xl md:text-5xl font-bold font-display mt-2 mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>{content.projects.title}</h2>
+          <p className={`text-lg max-w-xl ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{content.projects.subtitle}</p>
         </motion.div>
 
         {loading ? (
@@ -156,13 +158,13 @@ const Projects = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 perspective-[1000px]">
             {projects.map((project, idx) => (
-              <ProjectCard key={project.id} project={project} index={idx} />
+              <ProjectCard key={project.id} project={project} index={idx} isDark={isDark} />
             ))}
           </div>
         )}
         
         <div className="mt-16 text-center">
-            <a href="https://github.com/OUARAS-khelil-Rafik" target="_blank" rel="noopener noreferrer" className="inline-flex items-center space-x-2 text-primary hover:text-white transition-colors border-b border-primary hover:border-white pb-1">
+            <a href="https://github.com/OUARAS-khelil-Rafik" target="_blank" rel="noopener noreferrer" className={`inline-flex items-center space-x-2 text-primary transition-colors border-b border-primary pb-1 ${isDark ? 'hover:text-white hover:border-white' : 'hover:text-slate-900 hover:border-slate-900'}`}>
                 <span>{content.projects.viewAll}</span>
                 <ArrowRight size={16} />
             </a>

@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
+import { useTheme } from '../context/ThemeContext';
 import { Mail, MapPin, Phone, Send, Loader } from 'lucide-react';
 import { EMAIL_ADDRESS, EMAIL_ADDRESS_2 } from '../constants';
 
 const Contact = () => {
   const { content } = useLanguage();
+  const { isDark } = useTheme();
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success'>('idle');
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -23,16 +25,16 @@ const Contact = () => {
         type={type}
         required
         placeholder={placeholder}
-        className="w-full bg-slate-900/50 border-b-2 border-slate-700 px-4 py-4 text-white placeholder-slate-500 focus:outline-none transition-colors"
+        className={`w-full border-b-2 px-4 py-4 focus:outline-none transition-colors ${isDark ? 'bg-slate-900/50 border-slate-700 text-white placeholder-slate-500' : 'bg-slate-100/50 border-slate-300 text-slate-900 placeholder-slate-400'}`}
       />
       <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-focus-within:w-full group-hover:w-full"></span>
     </div>
   );
 
   return (
-    <section id="contact" className="py-32 bg-[#0b1120] relative overflow-hidden">
+    <section id="contact" className={`py-32 relative overflow-hidden transition-colors duration-300 ${isDark ? 'bg-[#0b1120]' : 'bg-slate-100'}`}>
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-slate-900 to-transparent opacity-50 pointer-events-none" />
+      <div className={`absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l opacity-50 pointer-events-none ${isDark ? 'from-slate-900' : 'from-slate-200'} to-transparent`} />
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -43,8 +45,8 @@ const Contact = () => {
         >
           <div className="text-center mb-20">
             <span className="text-primary font-medium tracking-wide uppercase text-sm">05.</span>
-            <h2 className="text-4xl md:text-5xl font-bold font-display mt-2">{content.contact.title}</h2>
-            <p className="text-slate-400 mt-4 text-lg">{content.contact.subtitle}</p>
+            <h2 className={`text-4xl md:text-5xl font-bold font-display mt-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>{content.contact.title}</h2>
+            <p className={`mt-4 text-lg ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{content.contact.subtitle}</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -63,13 +65,13 @@ const Contact = () => {
                     transition={{ delay: idx * 0.1 }}
                     className="flex items-start space-x-6 group"
                  >
-                   <div className="p-4 bg-slate-800 rounded-2xl text-primary group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-blue-900/10">
+                   <div className={`p-4 rounded-2xl text-primary group-hover:scale-110 transition-transform duration-300 shadow-lg ${isDark ? 'bg-slate-800 shadow-blue-900/10' : 'bg-white shadow-blue-500/10'}`}>
                      <item.icon size={28} />
                    </div>
                    <div>
-                     <h4 className="text-white font-bold text-lg mb-2">{item.title}</h4>
+                     <h4 className={`font-bold text-lg mb-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>{item.title}</h4>
                      {item.lines.map((line, lIdx) => (
-                       <a key={lIdx} href={item.href} className="block text-slate-400 hover:text-white transition-colors">
+                       <a key={lIdx} href={item.href} className={`block transition-colors ${isDark ? 'text-slate-400 hover:text-white' : 'text-slate-600 hover:text-slate-900'}`}>
                          {line}
                        </a>
                      ))}
@@ -83,7 +85,7 @@ const Contact = () => {
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="bg-card p-8 md:p-10 rounded-3xl border border-slate-800 shadow-2xl"
+                className={`p-8 md:p-10 rounded-3xl border shadow-2xl ${isDark ? 'bg-card border-slate-800' : 'bg-white border-slate-200'}`}
             >
               {formState === 'success' ? (
                 <div className="h-full flex flex-col items-center justify-center text-center py-10">
@@ -117,7 +119,7 @@ const Contact = () => {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 }}
-                        className="text-2xl font-bold text-white mb-2"
+                        className={`text-2xl font-bold mb-2 ${isDark ? 'text-white' : 'text-slate-900'}`}
                     >
                         Message Sent!
                     </motion.h3>
@@ -125,7 +127,7 @@ const Contact = () => {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 }}
-                        className="text-slate-400"
+                        className={isDark ? 'text-slate-400' : 'text-slate-600'}
                     >
                         Thank you for reaching out. I'll get back to you shortly.
                     </motion.p>
@@ -151,7 +153,7 @@ const Contact = () => {
                             rows={4}
                             required
                             placeholder={content.contact.messagePlaceholder}
-                            className="w-full bg-slate-900/50 border-b-2 border-slate-700 px-4 py-4 text-white placeholder-slate-500 focus:outline-none transition-colors resize-none"
+                            className={`w-full border-b-2 px-4 py-4 focus:outline-none transition-colors resize-none ${isDark ? 'bg-slate-900/50 border-slate-700 text-white placeholder-slate-500' : 'bg-slate-100/50 border-slate-300 text-slate-900 placeholder-slate-400'}`}
                         ></textarea>
                         <span className="absolute bottom-1.5 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-focus-within:w-full group-hover:w-full"></span>
                     </div>

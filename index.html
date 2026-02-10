@@ -22,6 +22,11 @@
               secondary: '#6366f1', // Indigo for creativity
               dark: '#0f172a',
               card: '#1e293b',
+              // Light mode colors
+              'light-bg': '#f8fafc',
+              'light-card': '#ffffff',
+              'light-text': '#0f172a',
+              'light-muted': '#64748b',
             },
             animation: {
               'blob': 'blob 7s infinite',
@@ -39,26 +44,51 @@
       }
     </script>
     <style>
-      /* Custom Scrollbar */
+      /* Custom Scrollbar - Dark Mode */
+      .dark ::-webkit-scrollbar,
       ::-webkit-scrollbar {
         width: 8px;
       }
+      .dark ::-webkit-scrollbar-track,
       ::-webkit-scrollbar-track {
         background: #0f172a;
       }
+      .dark ::-webkit-scrollbar-thumb,
       ::-webkit-scrollbar-thumb {
         background: #334155;
         border-radius: 4px;
       }
+      .dark ::-webkit-scrollbar-thumb:hover,
       ::-webkit-scrollbar-thumb:hover {
         background: #475569;
       }
       
+      /* Custom Scrollbar - Light Mode */
+      .light ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      .light ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+      }
+      .light ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+      
+      /* Dark Mode Body */
+      .dark body,
       body {
         background-color: #0f172a;
         color: #f8fafc;
-        cursor: none; /* Hide default cursor for custom one */
+        cursor: none;
         overflow-x: hidden;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      
+      /* Light Mode Body */
+      .light body {
+        background-color: #f8fafc;
+        color: #0f172a;
       }
 
       @media (max-width: 768px) {
@@ -67,11 +97,21 @@
         }
       }
 
+      /* Glass Nav - Dark Mode */
+      .dark .glass-nav,
       .glass-nav {
         background: rgba(15, 23, 42, 0.8);
-        backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
+        backdrop-filter: blur(16px);
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      
+      /* Glass Nav - Light Mode */
+      .light .glass-nav {
+        background: rgba(248, 250, 252, 0.8);
+        -webkit-backdrop-filter: blur(16px);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
       }
 
       /* Film Grain Overlay */
@@ -85,6 +125,11 @@
         z-index: 9998;
         opacity: 0.04;
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+      
+      /* Hide grain in light mode */
+      .light .grain-overlay {
+        opacity: 0.02;
       }
     </style>
   <script type="importmap">

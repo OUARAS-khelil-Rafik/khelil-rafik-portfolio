@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, Variants } from 'framer-motion';
 import { ArrowRight, Download } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { useTheme } from '../context/ThemeContext';
 import SocialIcons from './SocialIcons';
 import Badge3D from './Badge3D';
 
@@ -73,6 +74,7 @@ const Typewriter = ({ text, delay = 0, speed = 50, className = "" }: { text: str
 
 const Hero = () => {
   const { content, language } = useLanguage();
+  const { isDark } = useTheme();
 
   const letterContainer: Variants = {
     hidden: { opacity: 0 },
@@ -107,7 +109,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-dark">
+    <section className={`relative min-h-screen flex items-center justify-center pt-20 overflow-hidden transition-colors duration-300 ${isDark ? 'bg-dark' : 'bg-light-bg'}`}>
       {/* Dynamic Background Blobs */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
         <motion.div 
@@ -157,9 +159,9 @@ const Hero = () => {
             initial="hidden"
             animate="visible"
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-display leading-[1.1] tracking-tight">
+            <h1 className={`text-5xl md:text-7xl lg:text-8xl font-bold font-display leading-[1.1] tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>
                <span className="block">{splitText("OUARAS")}</span>
-               <span className="block text-slate-300">{splitText("Khelil Rafik")}</span>
+               <span className={`block ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{splitText("Khelil Rafik")}</span>
             </h1>
           </motion.div>
 
@@ -169,12 +171,12 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 1 }}
             className="mb-10"
           >
-            <h2 className="text-2xl md:text-4xl font-medium text-slate-400 font-display">
+            <h2 className={`text-2xl md:text-4xl font-medium font-display ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 animate-gradient-x">
                  {content.hero.role}
               </span>
             </h2>
-            <p className="text-xl md:text-2xl text-slate-500 mt-2 min-h-[1.2em]">
+            <p className={`text-xl md:text-2xl mt-2 min-h-[1.2em] ${isDark ? 'text-slate-500' : 'text-slate-500'}`}>
                <Typewriter text={content.hero.subrole} delay={1500} />
             </p>
           </motion.div>
@@ -183,7 +185,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="text-lg text-slate-400 max-w-2xl mb-12 leading-relaxed border-l-2 border-slate-800 pl-6"
+            className={`text-lg max-w-2xl mb-12 leading-relaxed border-l-2 pl-6 ${isDark ? 'text-slate-400 border-slate-800' : 'text-slate-600 border-slate-300'}`}
           >
             {content.hero.description}
           </motion.p>
@@ -209,7 +211,7 @@ const Hero = () => {
               download
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-slate-800/50 backdrop-blur-sm text-white rounded-full font-bold text-lg transition-all flex items-center justify-center space-x-2 border border-slate-700 hover:bg-slate-700 hover:border-slate-600"
+              className={`px-8 py-4 backdrop-blur-sm rounded-full font-bold text-lg transition-all flex items-center justify-center space-x-2 border ${isDark ? 'bg-slate-800/50 text-white border-slate-700 hover:bg-slate-700 hover:border-slate-600' : 'bg-white/50 text-slate-900 border-slate-300 hover:bg-slate-100 hover:border-slate-400'}`}
             >
               <span>{content.hero.downloadCv}</span>
               <Download size={20} />
@@ -237,10 +239,10 @@ const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, y: [0, 10, 0] }}
         transition={{ delay: 2, duration: 2, repeat: Infinity }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-slate-500 flex flex-col items-center gap-2"
+        className={`absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 ${isDark ? 'text-slate-500' : 'text-slate-400'}`}
       >
         <span className="text-[10px] uppercase tracking-widest opacity-50">Scroll</span>
-        <div className="w-5 h-8 border border-slate-600 rounded-full flex justify-center p-1">
+        <div className={`w-5 h-8 border rounded-full flex justify-center p-1 ${isDark ? 'border-slate-600' : 'border-slate-400'}`}>
           <motion.div 
             animate={{ height: ['20%', '50%', '20%'], y: [0, 8, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
