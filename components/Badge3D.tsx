@@ -125,7 +125,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       
-      const text = "OUARAS Khelil Rafik  -  OUARAS Khelil Rafik  -  ";
+      const text = "OUARAS Khelil Rafik";
       ctx.fillText(text, canvas.width / 2, canvas.height / 2);
     }
     const tex = new THREE.CanvasTexture(canvas);
@@ -297,11 +297,11 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
         </RigidBody>
       </group>
       <mesh ref={band}>
-        <meshLineGeometry points={curve.getPoints(32)} />
+        <meshLineGeometry points={curve.getPoints(50)} />
         <meshLineMaterial
           color="white"
           depthTest={false}
-          resolution={new THREE.Vector2(3200, 2400)}
+          resolution={new THREE.Vector2(3200, 3200)}
           useMap={1}
           map={lanyardTexture}
           repeat={new THREE.Vector2(-1, 1)}
