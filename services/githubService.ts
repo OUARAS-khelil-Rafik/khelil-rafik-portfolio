@@ -12,7 +12,21 @@ export const fetchProjects = async (): Promise<Project[]> => {
     }
 
     const data = await response.json();
-    return data;
+    
+    // Ensure data is an array and map to Project interface to handle potential null values
+    if (!Array.isArray(data)) {
+      return [];
+    }
+
+    return data.map((repo: any) => ({
+      id: repo.id,
+      name: repo.name,
+      description: repo.description || '',
+      html_url: repo.html_url,
+      stargazers_count: repo.stargazers_count,
+      language: repo.language || 'Unknown',
+      topics: repo.topics || []
+    }));
   } catch (error) {
     console.error('Error fetching GitHub projects:', error);
     return [];

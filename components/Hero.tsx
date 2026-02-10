@@ -3,6 +3,7 @@ import { motion, Variants } from 'framer-motion';
 import { ArrowRight, Download } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import SocialIcons from './SocialIcons';
+import Badge3D from './Badge3D';
 
 const Typewriter = ({ text, delay = 0, speed = 50, className = "" }: { text: string, delay?: number, speed?: number, className?: string }) => {
   const [displayText, setDisplayText] = useState('');
@@ -135,7 +136,8 @@ const Hero = () => {
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl mx-auto">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 max-w-7xl mx-auto">
+          <div className="flex-1 max-w-3xl">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -222,6 +224,11 @@ const Hero = () => {
           >
             <SocialIcons />
           </motion.div>
+          </div>
+          
+          <div className="flex-1 w-full h-[500px] lg:h-[700px] relative z-0 flex items-center justify-center pointer-events-auto">
+             <Badge3D />
+          </div>
         </div>
       </div>
       
