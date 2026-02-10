@@ -120,9 +120,8 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
       // Text
-      ctx.font = 'bold 60px "Arial", sans-serif';
+    ctx.font = 'bold 40px "Inter", "SF Pro Display", system-ui, sans-serif';
       ctx.fillStyle = '#e2e8f0'; 
-      ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       
       const text = "OUARAS Khelil Rafik";
