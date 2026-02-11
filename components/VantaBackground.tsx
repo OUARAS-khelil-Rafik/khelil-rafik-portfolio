@@ -4,7 +4,7 @@ import { useTheme } from '../context/ThemeContext';
 declare global {
   interface Window {
     VANTA: {
-      TOPOLOGY: (config: Record<string, unknown>) => { destroy: () => void };
+      BIRDS: (config: Record<string, unknown>) => { destroy: () => void };
     };
   }
 }
@@ -25,7 +25,7 @@ const VantaBackground: React.FC<{ children?: React.ReactNode }> = ({ children })
     // Wait for VANTA to be available
     const initVanta = () => {
       if (window.VANTA) {
-        const effect = window.VANTA.TOPOLOGY({
+        const effect = window.VANTA.BIRDS({
           el: vantaRef.current,
           mouseControls: true,
           touchControls: true,
@@ -34,8 +34,16 @@ const VantaBackground: React.FC<{ children?: React.ReactNode }> = ({ children })
           minWidth: 200.0,
           scale: 1.0,
           scaleMobile: 1.0,
-          color: isDark ? 0x3b82f6 : 0x6366f1, // primary blue in dark, indigo in light
-          backgroundColor: isDark ? 0x0f172a : 0xf8fafc, // dark-bg or light-bg
+          backgroundColor: isDark ? 0x0f172a : 0xf8fafc,
+          color1: isDark ? 0x3b82f6 : 0x6366f1, // primary blue / indigo
+          color2: isDark ? 0x6366f1 : 0x3b82f6, // indigo / blue
+          colorMode: "lerp",
+          wingSpan: 25.0,
+          birdSize: 1.2,
+          speedLimit: 4,
+          separation: 30,
+          alignment: 30,
+          cohesion: 30,
         });
         setVantaEffect(effect);
       }
