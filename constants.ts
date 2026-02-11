@@ -23,7 +23,7 @@ export const CONTENT: Record<string, ContentData> = {
     },
     about: {
       title: "About Me",
-      content: "My name is OUARAS Khelil Rafik, I am 22 years old and hold a Master’s degree in Data Science and Analysis in Computer Science. Consistently ranked among the top students in my program, I have been recognized for academic excellence and have built a strong foundation in software engineering, supported by substantial hands-on experience through real-world projects.\nMy skill set spans multiple programming languages and technologies, with a sharp eye for design and a strong interest in data analytics. I am highly motivated to contribute to innovative, forward-thinking projects and thrive in dynamic, collaborative tech environments where I can grow professionally while delivering impactful solutions.",
+      content: "My name is OUARAS Khelil Rafik, I am 23 years old and hold a Master’s degree in Data Science and Analysis in Computer Science. Consistently ranked among the top students in my program, I have been recognized for academic excellence and have built a strong foundation in software engineering, supported by substantial hands-on experience through real-world projects.\nMy skill set spans multiple programming languages and technologies, with a sharp eye for design and a strong interest in data analytics. I am highly motivated to contribute to innovative, forward-thinking projects and thrive in dynamic, collaborative tech environments where I can grow professionally while delivering impactful solutions.",
     },
     experience: {
       title: "Journey",
@@ -45,7 +45,7 @@ export const CONTENT: Record<string, ContentData> = {
         {
           id: 'w2',
           role: 'Instructor',
-          company: 'University of Algiers 01',
+          company: 'Ben Youssef Ben Khedda University of Algiers 01',
           date: 'Sep 2025 - June 2026',
           type: 'work',
           description: [
@@ -81,25 +81,39 @@ export const CONTENT: Record<string, ContentData> = {
         {
           id: 'e1',
           role: 'Master in Computer Science (Analytics & Data Science)',
-          company: 'Ben Youssef Ben Khedda University 01',
+          company: 'Ben Youssef Ben Khedda University of Algiers 01',
           date: 'Graduation: July 2025',
           type: 'education',
           description: [
             'Ranked 1st in specialty with excellent academic performance.',
-            'Thesis: Assessment of Ooredoo’s Competitive Position using AI.',
-            'Relevant Coursework: Machine Learning, Deep Learning, Big Data, Data Mining.'
+            "Thesis: Assessment of Ooredoo's Competitive Position using AI.",
+            'Relevant Coursework: Machine Learning, Deep Learning, Big Data, Data Mining.',
+            'Developed a script for OCR image processing tailored to Arabic characters and submitted a conference paper titled "Bridging the Gap: Fusing CNNs and Transformers to Decode the Elegance of Handwritten Arabic Script".',
+            'Developed a medical imaging script titled "HEMORRHAGE AI: Transforming Intracranial Hemorrhage Diagnosis with Machine Learning and Deep Learning".',
+            'Developed a web application for sentiment analysis of Arabic tweets named "IHSAS (إحساس)," accompanied by a scientific article.'
           ]
         },
         {
           id: 'e2',
           role: 'Bachelor of Mathematics & Computer Science',
-          company: "M'hamed Bougara University",
+          company: "M'hamed Bougara University of Boumerdes",
           date: 'Graduation: July 2023',
           type: 'education',
           description: [
             'Specialty: Computer Systems.',
-            'Valedictorian (Major de promo) with 13.03/20.',
-            'Thesis: DotWise.online (Grade: 18/20).'
+            'Published a scientific paper related to the thesis and presented it at conferences.'
+          ]
+        },
+        {
+          id: 'e3',
+          role: 'Baccalaureate of Mathematics',
+          company: 'Mohamed Lamine Dabaghine High School, The Eucalyptus, Algiers',
+          date: 'Graduation: September 2020',
+          type: 'education',
+          description: [
+            'Earned the Honors distinction for consistently strong performance in the Mathematics Baccalaureate.',
+            'Maintained a steady position among the top students throughout the academic journey.',
+            'Recognized for excellence in various math competitions, demonstrating strong problem-solving and analytical skills.'
           ]
         }
       ]
@@ -165,7 +179,7 @@ export const CONTENT: Record<string, ContentData> = {
     },
     about: {
       title: "À propos de moi",
-      content: "Je m'appelle OUARAS Khelil Rafik, j'ai 22 ans et je suis titulaire d'un Master en Informatique, spécialité Science et Analyse de Données. Constamment classé parmi les meilleurs de ma promotion, j'ai bâti une solide expertise en génie logiciel, renforcée par une expérience significative sur des projets concrets.\nMes compétences allient maîtrise technique, analyse de données et sensibilité au design. Passionné par l'innovation, je m'épanouis dans des environnements dynamiques et collaboratifs où je peux évoluer professionnellement tout en apportant des solutions à fort impact.",
+      content: "Je m'appelle OUARAS Khelil Rafik, j'ai 23 ans et je suis titulaire d'un Master en Informatique, spécialité Science et Analyse de Données. Constamment classé parmi les meilleurs de ma promotion, j'ai bâti une solide expertise en génie logiciel, renforcée par une expérience significative sur des projets concrets.\nMes compétences allient maîtrise technique, analyse de données et sensibilité au design. Passionné par l'innovation, je m'épanouis dans des environnements dynamiques et collaboratifs où je peux évoluer professionnellement tout en apportant des solutions à fort impact.",
     },
     experience: {
       title: "Parcours",
@@ -187,7 +201,7 @@ export const CONTENT: Record<string, ContentData> = {
         {
           id: 'w2',
           role: 'Enseignant',
-          company: 'Université d\'Alger 01',
+          company: 'Université Ben Youssef Ben Khedda d\'Alger 01',
           date: 'Sep 2025 - Juin 2026',
           type: 'work',
           description: [
@@ -223,25 +237,39 @@ export const CONTENT: Record<string, ContentData> = {
         {
           id: 'e1',
           role: 'Master en Informatique (Analyse et Science des Données)',
-          company: 'Université Ben Youssef Ben Khedda 01',
+          company: 'Université Ben Youssef Ben Khedda d\'Alger 01',
           date: 'Diplôme : Juillet 2025',
           type: 'education',
           description: [
             'Classé 1er de la spécialité avec d\'excellentes performances.',
-            'Mémoire : Analyse des sentiments clients via l\'IA (Note: 17.75/20).',
-            'Cours : Machine Learning, Deep Learning, Big Data.'
+            "Mémoire : Évaluation de la position concurrentielle d'Ooredoo via l'IA.",
+            'Cours : Machine Learning, Deep Learning, Big Data, Data Mining.',
+            'Développement d\'un script de traitement OCR d\'images adapté aux caractères arabes et soumission d\'un article de conférence intitulé "Bridging the Gap: Fusing CNNs and Transformers to Decode the Elegance of Handwritten Arabic Script".',
+            'Développement d\'un script d\'imagerie médicale intitulé "HEMORRHAGE AI: Transforming Intracranial Hemorrhage Diagnosis with Machine Learning and Deep Learning".',
+            'Développement d\'une application web d\'analyse de sentiments des tweets arabes nommée "IHSAS (إحساس)", accompagnée d\'un article scientifique.'
           ]
         },
         {
           id: 'e2',
           role: 'Licence Mathématiques et Informatique',
-          company: "Université M'hamed Bougara",
+          company: "Université M'hamed Bougara de Boumerdès",
           date: 'Diplôme : Juillet 2023',
           type: 'education',
           description: [
             'Spécialité : Systèmes Informatiques.',
-            'Major de promotion (13.03/20).',
-            'Mémoire : DotWise.online (Note: 18/20).'
+            'Publication d\'un article scientifique lié au mémoire et présentation lors de conférences.'
+          ]
+        },
+        {
+          id: 'e3',
+          role: 'Baccalauréat Mathématiques',
+          company: 'Lycée Mohamed Lamine Dabaghine, Les Eucalyptus, Alger',
+          date: 'Diplôme : Septembre 2020',
+          type: 'education',
+          description: [
+            'Obtention de la mention Honorable pour des performances constantes au Baccalauréat Mathématiques.',
+            'Maintien d\'une position stable parmi les meilleurs étudiants tout au long du parcours académique.',
+            'Reconnu pour l\'excellence dans diverses compétitions mathématiques, démontrant de solides compétences en résolution de problèmes et en analyse.'
           ]
         }
       ]

@@ -39,7 +39,7 @@ const VantaBackground: React.FC<{ children?: React.ReactNode }> = ({ children })
           color2: isDark ? 0x6366f1 : 0x3b82f6, // indigo / blue
           colorMode: "lerp",
           wingSpan: 25.0,
-          birdSize: 1,
+          birdSize: 0.25,
           speedLimit: 3,
           separation: 50,
           alignment: 50,
