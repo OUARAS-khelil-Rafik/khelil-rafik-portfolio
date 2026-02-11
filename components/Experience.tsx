@@ -16,7 +16,7 @@ const Experience = () => {
   });
 
   return (
-    <section id="experience" className={`py-32 overflow-hidden transition-colors duration-300 ${isDark ? 'bg-dark' : 'bg-light-bg'}`}>
+    <section id="experience" className="py-32 overflow-hidden transition-colors duration-300">
       <div className="container mx-auto px-6" ref={containerRef}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}

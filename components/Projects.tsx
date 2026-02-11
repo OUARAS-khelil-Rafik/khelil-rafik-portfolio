@@ -127,7 +127,7 @@ const Projects = () => {
   }, []);
 
   return (
-    <section id="projects" className={`py-32 relative z-10 transition-colors duration-300 ${isDark ? 'bg-dark' : 'bg-light-bg'}`}>
+    <section id="projects" className="py-32 relative z-10 transition-colors duration-300">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

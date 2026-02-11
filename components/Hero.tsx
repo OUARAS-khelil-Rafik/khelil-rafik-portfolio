@@ -109,7 +109,7 @@ const Hero = () => {
   };
 
   return (
-    <section className={`relative min-h-screen flex items-center justify-center pt-20 overflow-hidden transition-colors duration-300 ${isDark ? 'bg-dark' : 'bg-light-bg'}`}>
+    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden transition-colors duration-300">
       {/* Dynamic Background Blobs */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
         <motion.div 

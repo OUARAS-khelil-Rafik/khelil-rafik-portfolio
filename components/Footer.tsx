@@ -8,7 +8,7 @@ const Footer = () => {
   const { isDark } = useTheme();
 
   return (
-    <footer className={`border-t py-8 transition-colors duration-300 ${isDark ? 'bg-dark border-slate-800' : 'bg-light-bg border-slate-200'}`}>
+    <footer className={`border-t py-8 transition-colors duration-300 backdrop-blur-md ${isDark ? 'border-slate-800 bg-dark/80' : 'border-slate-200 bg-light-bg/80'}`}>
       <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
         <div className="mb-4 md:mb-0">
           <span className={`text-lg font-bold font-display ${isDark ? 'text-white' : 'text-slate-900'}`}>

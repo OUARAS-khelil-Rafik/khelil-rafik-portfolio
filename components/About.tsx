@@ -14,7 +14,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className={`py-24 relative transition-colors duration-300 ${isDark ? 'bg-dark' : 'bg-light-bg'}`}>
+    <section id="about" className="py-24 relative transition-colors duration-300">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

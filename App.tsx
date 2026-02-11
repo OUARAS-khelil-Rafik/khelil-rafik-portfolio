@@ -1,6 +1,7 @@
 import { LanguageProvider } from './context/LanguageContext';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import CustomCursor from './components/CustomCursor';
+import VantaBackground from './components/VantaBackground';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -17,9 +18,10 @@ function AppContent() {
   return (
     <div className={`min-h-screen transition-colors duration-300 ${
       isDark 
-        ? 'bg-dark text-white' 
-        : 'bg-light-bg text-light-text'
+        ? 'text-white' 
+        : 'text-light-text'
     } selection:bg-primary/30 font-sans`}>
+      <VantaBackground />
       <CustomCursor />
       <Navbar />
       <main>

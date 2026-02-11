@@ -32,10 +32,7 @@ const Contact = () => {
   );
 
   return (
-    <section id="contact" className={`py-32 relative overflow-hidden transition-colors duration-300 ${isDark ? 'bg-[#0b1120]' : 'bg-slate-100'}`}>
-      {/* Background decoration */}
-      <div className={`absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l opacity-50 pointer-events-none ${isDark ? 'from-slate-900' : 'from-slate-200'} to-transparent`} />
-
+    <section id="contact" className="py-32 relative overflow-hidden transition-colors duration-300">
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -126,7 +126,7 @@ const Navbar = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className={`fixed inset-0 z-40 pt-24 px-6 md:hidden ${isDark ? 'bg-dark' : 'bg-light-bg'}`}
+            className={`fixed inset-0 z-40 pt-24 px-6 md:hidden backdrop-blur-md ${isDark ? 'bg-dark/90' : 'bg-light-bg/90'}`}
           >
             <div className="flex flex-col space-y-6">
               {navLinks.map((link, idx) => (
