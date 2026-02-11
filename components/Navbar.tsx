@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Globe, Sun, Moon } from 'lucide-react';
+import { Menu, X, Globe, Sun, Moon, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
 
@@ -10,6 +10,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
+  const [menuExpanded, setMenuExpanded] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,34 +56,115 @@ const Navbar = () => {
           OUARAS<span className={`text-primary group-hover:${isDark ? 'text-white' : 'text-slate-900'} transition-colors`}>.dev</span>
         </a>
 
-        {/* Desktop Nav */}
+        {/* Desktop Nav - Liquid Glass Menu */}
         <nav className="hidden md:flex items-center space-x-1">
-          <div className={`flex backdrop-blur-md rounded-full p-1 border mr-6 ${
-            isDark 
-              ? 'bg-slate-900/50 border-slate-800/50' 
-              : 'bg-white/50 border-slate-200/50'
-          }`}>
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className={`relative px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  activeSection === link.id 
-                    ? (isDark ? 'text-white' : 'text-slate-900')
-                    : (isDark ? 'text-slate-400 hover:text-white' : 'text-slate-500 hover:text-slate-900')
-                }`}
-              >
-                {activeSection === link.id && (
-                  <motion.span
-                    layoutId="nav-pill"
-                    className={`absolute inset-0 rounded-full shadow-inner ${isDark ? 'bg-slate-800' : 'bg-slate-200'}`}
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  />
-                )}
-                <span className="relative z-10">{link.label}</span>
-              </a>
-            ))}
-          </div>
+          <motion.div 
+            className={`relative flex items-center backdrop-blur-xl rounded-full border mr-6 overflow-hidden cursor-pointer ${
+              isDark 
+                ? 'bg-slate-900/60 border-slate-700/50 shadow-lg shadow-black/20' 
+                : 'bg-white/70 border-slate-200/60 shadow-lg shadow-slate-200/50'
+            }`}
+            onMouseEnter={() => setMenuExpanded(true)}
+            onMouseLeave={() => setMenuExpanded(false)}
+            layout
+            initial={false}
+            animate={{
+              width: menuExpanded ? 'auto' : 56,
+              paddingLeft: menuExpanded ? 4 : 0,
+              paddingRight: menuExpanded ? 4 : 0,
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 400,
+              damping: 30,
+              mass: 1,
+            }}
+            style={{
+              height: 48,
+            }}
+          >
+            {/* Collapsed state - Menu icon */}
+            <AnimatePresence mode="wait">
+              {!menuExpanded && (
+                <motion.div
+                  key="collapsed"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.15 }}
+                  className="absolute inset-0 flex items-center justify-center"
+                >
+                  <div className={`flex items-center justify-center w-full h-full ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
+                    <motion.div
+                      animate={{ x: [0, 3, 0] }}
+                      transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                    >
+                      <ChevronRight size={20} />
+                    </motion.div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Expanded state - Nav links */}
+            <AnimatePresence>
+              {menuExpanded && (
+                <motion.div
+                  key="expanded"
+                  className="flex items-center p-1"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2, delay: 0.1 }}
+                >
+                  {navLinks.map((link, index) => (
+                    <motion.a
+                      key={link.label}
+                      href={link.href}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -10 }}
+                      transition={{ 
+                        duration: 0.2, 
+                        delay: index * 0.05,
+                        ease: "easeOut"
+                      }}
+                      className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap ${
+                        activeSection === link.id 
+                          ? (isDark ? 'text-white' : 'text-slate-900')
+                          : (isDark ? 'text-slate-400 hover:text-white' : 'text-slate-500 hover:text-slate-900')
+                      }`}
+                    >
+                      {activeSection === link.id && (
+                        <motion.span
+                          layoutId="nav-pill"
+                          className={`absolute inset-0 rounded-full shadow-inner ${isDark ? 'bg-slate-800/80' : 'bg-slate-200/80'}`}
+                          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                        />
+                      )}
+                      <span className="relative z-10">{link.label}</span>
+                    </motion.a>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Liquid glass shine effect */}
+            <motion.div
+              className={`absolute inset-0 pointer-events-none ${
+                isDark 
+                  ? 'bg-gradient-to-r from-transparent via-white/5 to-transparent' 
+                  : 'bg-gradient-to-r from-transparent via-white/40 to-transparent'
+              }`}
+              animate={{
+                x: menuExpanded ? ['-100%', '200%'] : ['0%', '0%'],
+              }}
+              transition={{
+                duration: 0.8,
+                ease: "easeInOut",
+              }}
+            />
+          </motion.div>
           
           {/* Theme Toggle Button */}
           <button
