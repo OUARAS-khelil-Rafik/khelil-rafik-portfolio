@@ -14,9 +14,16 @@ export interface Experience {
   type: 'work' | 'education';
 }
 
+export interface Skill {
+  name: string;
+  icon: string;
+  color?: string;
+}
+
 export interface SkillCategory {
   title: string;
-  skills: string[];
+  icon: string;
+  skills: Skill[];
 }
 
 export interface Project {

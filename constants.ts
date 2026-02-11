@@ -122,20 +122,121 @@ export const CONTENT: Record<string, ContentData> = {
       title: "Technical Arsenal",
       categories: [
         {
-          title: "Data Science & AI",
-          skills: ["Python", "TensorFlow", "Keras", "PyTorch", "Pandas", "Matlab", "R", "Scikit-Learn"]
+          title: "Programming Languages",
+          icon: "code",
+          skills: [
+            { name: "C", icon: "/assets/logos-skills/c.svg", color: "#A8B9CC" },
+            { name: "C++", icon: "/assets/logos-skills/cplusplus.svg", color: "#00599C" },
+            { name: "Java", icon: "/assets/logos-skills/java.svg", color: "#007396" },
+            { name: "Python", icon: "/assets/logos-skills/python.svg", color: "#3776AB" },
+            { name: "R", icon: "/assets/logos-skills/r.svg", color: "#276DC3" },
+            { name: "JavaScript", icon: "/assets/logos-skills/javascript.svg", color: "#F7DF1E" },
+            { name: "TypeScript", icon: "/assets/logos-skills/typescript.svg", color: "#3178C6" },
+            { name: "PHP", icon: "/assets/logos-skills/php.svg", color: "#777BB4" },
+            { name: "Dart", icon: "/assets/logos-skills/dart.svg", color: "#0175C2" },
+            { name: "Matlab", icon: "/assets/logos-skills/matlab.svg", color: "#0076A8" },
+            { name: "LaTeX", icon: "/assets/logos-skills/latex.svg", color: "#008080" }
+          ]
         },
         {
-          title: "Web & Mobile Dev",
-          skills: ["React JS", "Next.js", "TypeScript", "Flutter (Dart)", "Node.js", "Express", "PHP", "HTML/CSS"]
+          title: "Web Technologies",
+          icon: "globe",
+          skills: [
+            { name: "HTML5", icon: "/assets/logos-skills/html5.svg", color: "#E34F26" },
+            { name: "CSS3", icon: "/assets/logos-skills/css3.svg", color: "#1572B6" },
+            { name: "React", icon: "/assets/logos-skills/react.svg", color: "#61DAFB" },
+            { name: "Next.js", icon: "/assets/logos-skills/nextjs.svg", color: "#000000" },
+            { name: "Vue.js", icon: "/assets/logos-skills/vuejs.svg", color: "#4FC08D" },
+            { name: "Three.js", icon: "/assets/logos-skills/threejs.svg", color: "#000000" },
+            { name: "Node.js", icon: "/assets/logos-skills/nodejs.svg", color: "#339933" },
+            { name: "Express", icon: "/assets/logos-skills/express.svg", color: "#000000" },
+            { name: "Django", icon: "/assets/logos-skills/django.svg", color: "#092E20" },
+            { name: "Flask", icon: "/assets/logos-skills/flask.svg", color: "#000000" },
+            { name: "FastAPI", icon: "/assets/logos-skills/fastapi.svg", color: "#009688" },
+            { name: "REST API", icon: "/assets/logos-skills/postman.svg", color: "#FF6C37" }
+          ]
+        },
+        {
+          title: "Development Tools",
+          icon: "wrench",
+          skills: [
+            { name: "VS Code", icon: "/assets/logos-skills/vscode.svg", color: "#007ACC" },
+            { name: "Eclipse", icon: "/assets/logos-skills/eclipse.svg", color: "#2C2255" },
+            { name: "PyCharm", icon: "/assets/logos-skills/pycharm.svg", color: "#21D789" },
+            { name: "RStudio", icon: "/assets/logos-skills/rstudio.svg", color: "#75AADB" },
+            { name: "Spyder", icon: "/assets/logos-skills/spyder.svg", color: "#FF0000" },
+            { name: "GitHub", icon: "/assets/logos-skills/github.svg", color: "#181717" },
+            { name: "Git", icon: "/assets/logos-skills/git.svg", color: "#F05032" },
+            { name: "Kaggle", icon: "/assets/logos-skills/kaggle.svg", color: "#20BEFF" },
+            { name: "Google Colab", icon: "/assets/logos-skills/googlecolaboratory.svg", color: "#F9AB00" }
+          ]
+        },
+        {
+          title: "Data Science & AI",
+          icon: "brain",
+          skills: [
+            { name: "TensorFlow", icon: "/assets/logos-skills/tensorflow.svg", color: "#FF6F00" },
+            { name: "Keras", icon: "/assets/logos-skills/keras.svg", color: "#D00000" },
+            { name: "PyTorch", icon: "/assets/logos-skills/pytorch.svg", color: "#EE4C2C" },
+            { name: "Pandas", icon: "/assets/logos-skills/pandas.svg", color: "#150458" },
+            { name: "NumPy", icon: "/assets/logos-skills/numpy.svg", color: "#013243" },
+            { name: "Matplotlib", icon: "/assets/logos-skills/Matplotlib.svg", color: "#11557C" },
+            { name: "OpenCV", icon: "/assets/logos-skills/opencv.svg", color: "#5C3EE8" },
+            { name: "Librosa", icon: "/assets/logos-skills/librosa.svg", color: "#FF6F00" },
+            { name: "Streamlit", icon: "/assets/logos-skills/streamlit.svg", color: "#FF4B4B" },
+            { name: "Scikit-Learn", icon: "/assets/logos-skills/scikitlearn.svg", color: "#F7931E" },
+            { name: "Jupyter", icon: "/assets/logos-skills/jupyter.svg", color: "#F37626" },
+            { name: "Anaconda", icon: "/assets/logos-skills/anaconda.svg", color: "#44A833" }
+          ]
         },
         {
           title: "Databases & Big Data",
-          skills: ["SQL (MySQL, Oracle, SQLite)", "NoSQL (MongoDB)", "Hadoop", "Spark", "Firebase"]
+          icon: "database",
+          skills: [
+            { name: "MySQL", icon: "/assets/logos-skills/mysql.svg", color: "#4479A1" },
+            { name: "SQLite", icon: "/assets/logos-skills/sqlite.svg", color: "#003B57" },
+            { name: "Oracle", icon: "/assets/logos-skills/oracle.svg", color: "#F80000" },
+            { name: "MongoDB", icon: "/assets/logos-skills/mongodb.svg", color: "#47A248" },
+            { name: "Hadoop", icon: "/assets/logos-skills/hadoop.svg", color: "#66CCFF" },
+            { name: "Spark", icon: "/assets/logos-skills/spark.svg", color: "#E25A1C" }
+          ]
         },
         {
-          title: "Design & Tools",
-          skills: ["Figma/Canva", "Power BI", "Git/GitHub", "Docker", "Linux", "VS Code"]
+          title: "Microsoft Office",
+          icon: "file-text",
+          skills: [
+            { name: "Word", icon: "/assets/logos-skills/word.svg", color: "#2B579A" },
+            { name: "Excel", icon: "/assets/logos-skills/excel.svg", color: "#21A366" },
+            { name: "PowerPoint", icon: "/assets/logos-skills/powerpoint.svg", color: "#D24726" },
+            { name: "Access", icon: "/assets/logos-skills/access.svg", color: "#A4373A" },
+            { name: "Publisher", icon: "/assets/logos-skills/publisher.svg", color: "#077568" },
+            { name: "Sway", icon: "/assets/logos-skills/sway.svg", color: "#038387" }
+          ]
+        },
+        {
+          title: "Design & Productivity",
+          icon: "palette",
+          skills: [
+            { name: "Canva", icon: "/assets/logos-skills/canva.svg", color: "#00C4CC" },
+            { name: "Photoshop", icon: "/assets/logos-skills/photoshop.svg", color: "#31A8FF" },
+            { name: "Illustrator", icon: "/assets/logos-skills/illustrator.svg", color: "#FF9A00" },
+            { name: "Adobe Acrobat", icon: "/assets/logos-skills/acrobat.svg", color: "#EC1C24" },
+            { name: "Power BI", icon: "/assets/logos-skills/powerbi.svg", color: "#F2C811" },
+            { name: "SPSS", icon: "/assets/logos-skills/spss.svg", color: "#052FAD" },
+            { name: "Prezi", icon: "/assets/logos-skills/prezi.svg", color: "#3181FF" }
+          ]
+        },
+        {
+          title: "System & Modeling",
+          icon: "cpu",
+          skills: [
+            { name: "Linux", icon: "/assets/logos-skills/linux.svg", color: "#FCC624" },
+            { name: "VirtualBox", icon: "/assets/logos-skills/virtualbox.svg", color: "#183A61" },
+            { name: "UML", icon: "/assets/logos-skills/uml.svg", color: "#FABD14" },
+            { name: "StarUML", icon: "/assets/logos-skills/staruml.svg", color: "#E74430" },
+            { name: "Cisco", icon: "/assets/logos-skills/cisco.svg", color: "#1BA0D7" },
+            { name: "Overleaf", icon: "/assets/logos-skills/overleaf.svg", color: "#47A141" },
+          ]
         }
       ]
     },
@@ -278,20 +379,121 @@ export const CONTENT: Record<string, ContentData> = {
       title: "Arsenal Technique",
       categories: [
         {
-          title: "Data Science & IA",
-          skills: ["Python", "TensorFlow", "Keras", "PyTorch", "Pandas", "Matlab", "R", "Scikit-Learn"]
+          title: "Langages de Programmation",
+          icon: "code",
+          skills: [
+            { name: "C", icon: "/assets/logos-skills/c.svg", color: "#A8B9CC" },
+            { name: "C++", icon: "/assets/logos-skills/cplusplus.svg", color: "#00599C" },
+            { name: "Java", icon: "/assets/logos-skills/java.svg", color: "#007396" },
+            { name: "Python", icon: "/assets/logos-skills/python.svg", color: "#3776AB" },
+            { name: "R", icon: "/assets/logos-skills/r.svg", color: "#276DC3" },
+            { name: "JavaScript", icon: "/assets/logos-skills/javascript.svg", color: "#F7DF1E" },
+            { name: "TypeScript", icon: "/assets/logos-skills/typescript.svg", color: "#3178C6" },
+            { name: "PHP", icon: "/assets/logos-skills/php.svg", color: "#777BB4" },
+            { name: "Dart", icon: "/assets/logos-skills/dart.svg", color: "#0175C2" },
+            { name: "Matlab", icon: "/assets/logos-skills/matlab.svg", color: "#0076A8" },
+            { name: "LaTeX", icon: "/assets/logos-skills/latex.svg", color: "#008080" }
+          ]
         },
         {
-          title: "Dév Web & Mobile",
-          skills: ["React JS", "Next.js", "TypeScript", "Flutter (Dart)", "Node.js", "Express", "PHP", "HTML/CSS"]
+          title: "Technologies Web",
+          icon: "globe",
+          skills: [
+            { name: "HTML5", icon: "/assets/logos-skills/html5.svg", color: "#E34F26" },
+            { name: "CSS3", icon: "/assets/logos-skills/css3.svg", color: "#1572B6" },
+            { name: "React", icon: "/assets/logos-skills/react.svg", color: "#61DAFB" },
+            { name: "Next.js", icon: "/assets/logos-skills/nextjs.svg", color: "#000000" },
+            { name: "Vue.js", icon: "/assets/logos-skills/vuejs.svg", color: "#4FC08D" },
+            { name: "Three.js", icon: "/assets/logos-skills/threejs.svg", color: "#000000" },
+            { name: "Node.js", icon: "/assets/logos-skills/nodejs.svg", color: "#339933" },
+            { name: "Express", icon: "/assets/logos-skills/express.svg", color: "#000000" },
+            { name: "Django", icon: "/assets/logos-skills/django.svg", color: "#092E20" },
+            { name: "Flask", icon: "/assets/logos-skills/flask.svg", color: "#000000" },
+            { name: "FastAPI", icon: "/assets/logos-skills/fastapi.svg", color: "#009688" },
+            { name: "REST API", icon: "/assets/logos-skills/postman.svg", color: "#FF6C37" }
+          ]
         },
         {
-          title: "Bases de Données",
-          skills: ["SQL (MySQL, Oracle, SQLite)", "NoSQL (MongoDB)", "Hadoop", "Spark", "Firebase"]
+          title: "Outils de Développement",
+          icon: "wrench",
+          skills: [
+            { name: "VS Code", icon: "/assets/logos-skills/vscode.svg", color: "#007ACC" },
+            { name: "Eclipse", icon: "/assets/logos-skills/eclipse.svg", color: "#2C2255" },
+            { name: "PyCharm", icon: "/assets/logos-skills/pycharm.svg", color: "#21D789" },
+            { name: "RStudio", icon: "/assets/logos-skills/rstudio.svg", color: "#75AADB" },
+            { name: "Spyder", icon: "/assets/logos-skills/spyder.svg", color: "#FF0000" },
+            { name: "GitHub", icon: "/assets/logos-skills/github.svg", color: "#181717" },
+            { name: "Git", icon: "/assets/logos-skills/git.svg", color: "#F05032" },
+            { name: "Kaggle", icon: "/assets/logos-skills/kaggle.svg", color: "#20BEFF" },
+            { name: "Google Colab", icon: "/assets/logos-skills/googlecolaboratory.svg", color: "#F9AB00" }
+          ]
         },
         {
-          title: "Outils & Design",
-          skills: ["Figma/Canva", "Power BI", "Git/GitHub", "Docker", "Linux", "VS Code"]
+          title: "Science des Données & IA",
+          icon: "brain",
+          skills: [
+            { name: "TensorFlow", icon: "/assets/logos-skills/tensorflow.svg", color: "#FF6F00" },
+            { name: "Keras", icon: "/assets/logos-skills/keras.svg", color: "#D00000" },
+            { name: "PyTorch", icon: "/assets/logos-skills/pytorch.svg", color: "#EE4C2C" },
+            { name: "Pandas", icon: "/assets/logos-skills/pandas.svg", color: "#150458" },
+            { name: "NumPy", icon: "/assets/logos-skills/numpy.svg", color: "#013243" },
+            { name: "Matplotlib", icon: "/assets/logos-skills/Matplotlib.svg", color: "#11557C" },
+            { name: "OpenCV", icon: "/assets/logos-skills/opencv.svg", color: "#5C3EE8" },
+            { name: "Librosa", icon: "/assets/logos-skills/librosa.svg", color: "#FF6F00" },
+            { name: "Streamlit", icon: "/assets/logos-skills/streamlit.svg", color: "#FF4B4B" },
+            { name: "Scikit-Learn", icon: "/assets/logos-skills/scikitlearn.svg", color: "#F7931E" },
+            { name: "Jupyter", icon: "/assets/logos-skills/jupyter.svg", color: "#F37626" },
+            { name: "Anaconda", icon: "/assets/logos-skills/anaconda.svg", color: "#44A833" }
+          ]
+        },
+        {
+          title: "Bases de Données & Big Data",
+          icon: "database",
+          skills: [
+            { name: "MySQL", icon: "/assets/logos-skills/mysql.svg", color: "#4479A1" },
+            { name: "SQLite", icon: "/assets/logos-skills/sqlite.svg", color: "#003B57" },
+            { name: "Oracle", icon: "/assets/logos-skills/oracle.svg", color: "#F80000" },
+            { name: "MongoDB", icon: "/assets/logos-skills/mongodb.svg", color: "#47A248" },
+            { name: "Hadoop", icon: "/assets/logos-skills/hadoop.svg", color: "#66CCFF" },
+            { name: "Spark", icon: "/assets/logos-skills/spark.svg", color: "#E25A1C" }
+          ]
+        },
+        {
+          title: "Microsoft Office",
+          icon: "file-text",
+          skills: [
+            { name: "Word", icon: "/assets/logos-skills/word.svg", color: "#2B579A" },
+            { name: "Excel", icon: "/assets/logos-skills/excel.svg", color: "#21A366" },
+            { name: "PowerPoint", icon: "/assets/logos-skills/powerpoint.svg", color: "#D24726" },
+            { name: "Access", icon: "/assets/logos-skills/access.svg", color: "#A4373A" },
+            { name: "Publisher", icon: "/assets/logos-skills/publisher.svg", color: "#077568" },
+            { name: "Sway", icon: "/assets/logos-skills/sway.svg", color: "#038387" }
+          ]
+        },
+        {
+          title: "Design & Productivité",
+          icon: "palette",
+          skills: [
+            { name: "Canva", icon: "/assets/logos-skills/canva.svg", color: "#00C4CC" },
+            { name: "Photoshop", icon: "/assets/logos-skills/photoshop.svg", color: "#31A8FF" },
+            { name: "Illustrator", icon: "/assets/logos-skills/illustrator.svg", color: "#FF9A00" },
+            { name: "Adobe Acrobat", icon: "/assets/logos-skills/acrobat.svg", color: "#EC1C24" },
+            { name: "Power BI", icon: "/assets/logos-skills/powerbi.svg", color: "#F2C811" },
+            { name: "SPSS", icon: "/assets/logos-skills/spss.svg", color: "#052FAD" },
+            { name: "Prezi", icon: "/assets/logos-skills/prezi.svg", color: "#3181FF" }
+          ]
+        },
+        {
+          title: "Systèmes & Modélisation",
+          icon: "cpu",
+          skills: [
+            { name: "Linux", icon: "/assets/logos-skills/linux.svg", color: "#FCC624" },
+            { name: "VirtualBox", icon: "/assets/logos-skills/virtualbox.svg", color: "#183A61" },
+            { name: "UML", icon: "/assets/logos-skills/uml.svg", color: "#FABD14" },
+            { name: "StarUML", icon: "/assets/logos-skills/staruml.svg", color: "#E74430" },
+            { name: "Cisco", icon: "/assets/logos-skills/cisco.svg", color: "#1BA0D7" },
+            { name: "Overleaf", icon: "/assets/logos-skills/overleaf.svg", color: "#47A141" },
+          ]
         }
       ]
     },
