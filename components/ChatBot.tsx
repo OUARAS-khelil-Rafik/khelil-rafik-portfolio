@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Bot, User, Loader2 } from 'lucide-react';
-import { sendMessage, Message } from '@/services/chatbotService';
+import { sendMessage, Message } from '../services/chatbotService';
 import { useTheme } from '../context/ThemeContext';
 import { useLanguage } from '../context/LanguageContext';
 
