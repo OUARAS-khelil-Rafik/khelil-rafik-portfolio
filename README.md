@@ -120,7 +120,7 @@ A stunning, interactive portfolio website showcasing expertise in **Data Science
 
 3. **Configure environment variables** (optional)
    ```bash
-   cp .env.example .env.local
+   cp .env.example .env
    ```
 
 4. **Start development server**
