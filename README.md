@@ -11,7 +11,7 @@
 
 A stunning, interactive portfolio website showcasing expertise in **Data Science**, **Full Stack Development**, and **UI/UX Design**. Built with cutting-edge technologies and immersive 3D visualizations.
 
-[🌐 View Live Demo](#) • [📧 Get in Touch](#contact) • [📄 Download CV](#)
+[🌐 View Live Demo](https://ouaras-khelil-rafik-portfolio.vercel.app/) • [📧 Get in Touch](https://ouaras-khelil-rafik-portfolio.vercel.app/#contact) • [📄 Download CV](https://ouaras-khelil-rafik-portfolio.vercel.app/#)
 
 </div>
 
@@ -285,9 +285,9 @@ Get in touch with me on multiple platforms:
 |----------|------|
 | 📧 **Email** | kikoouaras@gmail.com |
 | 🔗 **GitHub** | [@OUARAS-khelil-Rafik](https://github.com/OUARAS-khelil-Rafik) |
-| 💼 **LinkedIn** | [Khelil Rafik OUARAS](#) |
-| 🐦 **Twitter** | [@yourusername](#) |
-| 📦 **Portfolio** | [khelil-rafik.dev](#) |
+| 💼 **LinkedIn** | [Khelil Rafik OUARAS](https://www.linkedin.com/in/khelil-rafik-ouaras/) |
+| 🐦 **X** | [@Khelil_OUARAS](https://x.com/Khelil_OUARAS) |
+| 📦 **Portfolio** | [ouaras-khelil-rafik-portfolio.vercel.app](https://ouaras-khelil-rafik-portfolio.vercel.app/) |
 
 ---
 
