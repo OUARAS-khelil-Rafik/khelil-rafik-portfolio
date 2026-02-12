@@ -127,7 +127,7 @@ const Skills = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
           {content.skills.categories.map((category, idx) => (
             <motion.div
               key={idx}
@@ -139,7 +139,7 @@ const Skills = () => {
               viewport={{ once: true }}
               onMouseEnter={() => setActiveCategory(idx)}
               onMouseLeave={() => setActiveCategory(null)}
-              className={`group relative backdrop-blur-xl p-6 rounded-3xl border transition-all duration-500 overflow-hidden
+              className={`group relative backdrop-blur-xl p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl border transition-all duration-500 overflow-hidden
                 ${isDark 
                   ? 'bg-gradient-to-br from-slate-900/90 to-slate-800/60 border-slate-700/50 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20' 
                   : 'bg-gradient-to-br from-white/90 to-slate-50/60 border-slate-200 hover:border-blue-400/50 hover:shadow-2xl hover:shadow-blue-500/15'
@@ -158,9 +158,9 @@ const Skills = () => {
               />
 
               {/* Category Header */}
-              <div className="flex items-center gap-4 mb-4 relative z-10">
+              <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4 relative z-10">
                 <motion.div 
-                  className={`p-4 rounded-2xl transition-all duration-300
+                  className={`p-3 sm:p-4 rounded-xl sm:rounded-2xl transition-all duration-300
                     ${isDark 
                       ? 'bg-gradient-to-br from-blue-500/20 to-purple-500/20 text-blue-400 group-hover:from-blue-500/30 group-hover:to-purple-500/30 group-hover:shadow-lg group-hover:shadow-blue-500/20' 
                       : 'bg-gradient-to-br from-blue-500/10 to-purple-500/10 text-blue-600 group-hover:from-blue-500/20 group-hover:to-purple-500/20 group-hover:shadow-lg group-hover:shadow-blue-500/10'
@@ -171,10 +171,10 @@ const Skills = () => {
                   {categoryIcons[category.icon] || categoryIcons.code}
                 </motion.div>
                 <div>
-                  <h3 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                  <h3 className={`text-lg sm:text-xl font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>
                     {category.title}
                   </h3>
-                  <p className={`text-sm ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
+                  <p className={`text-xs sm:text-sm ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
                     {category.skills.length} technologies
                   </p>
                 </div>

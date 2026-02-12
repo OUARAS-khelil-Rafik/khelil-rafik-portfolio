@@ -11,6 +11,30 @@ interface BubbleCarouselProps {
 // Logos that need to be inverted in dark mode
 const darkLogos = ['Three.js', 'Express', 'Flask', 'GitHub', 'Spyder', 'Pandas', 'Next.js'];
 
+// Custom hook for responsive values
+const useResponsiveRadius = (count: number) => {
+  const [radius, setRadius] = useState(count > 8 ? 110 : count > 5 ? 95 : 80);
+  
+  useEffect(() => {
+    const updateRadius = () => {
+      const width = window.innerWidth;
+      if (width < 400) {
+        setRadius(count > 8 ? 70 : count > 5 ? 60 : 55);
+      } else if (width < 640) {
+        setRadius(count > 8 ? 85 : count > 5 ? 75 : 65);
+      } else {
+        setRadius(count > 8 ? 110 : count > 5 ? 95 : 80);
+      }
+    };
+    
+    updateRadius();
+    window.addEventListener('resize', updateRadius);
+    return () => window.removeEventListener('resize', updateRadius);
+  }, [count]);
+  
+  return radius;
+};
+
 const BubbleCarousel = ({ skills, isDark, categoryIndex }: BubbleCarouselProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const rotation = useMotionValue(0);
@@ -24,8 +48,8 @@ const BubbleCarousel = ({ skills, isDark, categoryIndex }: BubbleCarouselProps) 
   const count = skills.length;
   const angleStep = 360 / count;
   
-  // Responsive radius based on skill count
-  const radius = count > 8 ? 110 : count > 5 ? 95 : 80;
+  // Responsive radius based on skill count and screen size
+  const radius = useResponsiveRadius(count);
 
   // Auto-rotate when not interacting
   useEffect(() => {
@@ -86,7 +110,7 @@ const BubbleCarousel = ({ skills, isDark, categoryIndex }: BubbleCarouselProps) 
   return (
     <motion.div
       ref={containerRef}
-      className="relative w-full h-[260px] cursor-grab active:cursor-grabbing select-none touch-none"
+      className="relative w-full h-[200px] sm:h-[230px] md:h-[260px] cursor-grab active:cursor-grabbing select-none touch-none"
       onPanStart={handleDragStart}
       onPan={handleDrag}
       onPanEnd={handleDragEnd}
@@ -95,7 +119,7 @@ const BubbleCarousel = ({ skills, isDark, categoryIndex }: BubbleCarouselProps) 
     >
       {/* Central glow */}
       <div 
-        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full blur-2xl transition-opacity duration-500 ${
+        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-full blur-2xl transition-opacity duration-500 ${
           isInteracting ? 'opacity-60' : 'opacity-30'
         }`}
         style={{
@@ -192,7 +216,7 @@ const SkillBubble = ({
 
   return (
     <motion.div
-      className="absolute left-1/2 top-1/2 flex flex-col items-center justify-center cursor-pointer"
+      className="absolute left-1/2 top-1/2 flex flex-col items-center justify-center cursor-pointer -ml-6 -mt-6 sm:-ml-7 sm:-mt-7 md:-ml-8 md:-mt-8"
       style={{
         x,
         y,
@@ -200,8 +224,6 @@ const SkillBubble = ({
         opacity,
         zIndex,
         filter: useTransform(blur, (b) => `blur(${b}px)`),
-        marginLeft: -32,
-        marginTop: -32,
       }}
       onMouseEnter={() => setHoveredIndex(index)}
       onMouseLeave={() => setHoveredIndex(null)}
@@ -209,7 +231,7 @@ const SkillBubble = ({
       transition={{ duration: 0.4 }}
     >
       <motion.div
-        className={`relative w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 ${
+        className={`relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center transition-all duration-300 ${
           isDark 
             ? 'bg-gradient-to-br from-slate-800 to-slate-700 shadow-lg shadow-black/30' 
             : 'bg-gradient-to-br from-white to-slate-100 shadow-lg shadow-slate-300/50'
@@ -238,7 +260,7 @@ const SkillBubble = ({
         <motion.img
           src={skill.icon}
           alt={skill.name}
-          className="w-8 h-8 object-contain relative z-10"
+          className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 object-contain relative z-10"
           loading="lazy"
           style={{
             filter: isDark && darkLogos.includes(skill.name) 
@@ -257,14 +279,14 @@ const SkillBubble = ({
             {[...Array(3)].map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute w-1.5 h-1.5 rounded-full"
+                className="absolute w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full"
                 style={{ backgroundColor: skill.color || '#3b82f6' }}
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{
                   opacity: [0, 1, 0],
                   scale: [0.5, 1, 0.5],
-                  x: [0, (i - 1) * 20],
-                  y: [0, -30 - i * 10],
+                  x: [0, (i - 1) * 15],
+                  y: [0, -20 - i * 8],
                 }}
                 transition={{
                   duration: 1.5,
@@ -281,7 +303,7 @@ const SkillBubble = ({
       <motion.div
         initial={{ opacity: 0, y: 5 }}
         animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 5 }}
-        className={`absolute -bottom-7 px-2 py-1 rounded-lg text-xs font-semibold whitespace-nowrap ${
+        className={`absolute -bottom-5 sm:-bottom-6 md:-bottom-7 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md sm:rounded-lg text-[10px] sm:text-xs font-semibold whitespace-nowrap ${
           isDark ? 'bg-slate-700 text-white' : 'bg-slate-800 text-white'
         }`}
         style={{
@@ -290,7 +312,7 @@ const SkillBubble = ({
       >
         {skill.name}
         <div 
-          className={`absolute left-1/2 -translate-x-1/2 -top-1 w-2 h-2 rotate-45 ${
+          className={`absolute left-1/2 -translate-x-1/2 -top-1 w-1.5 h-1.5 sm:w-2 sm:h-2 rotate-45 ${
             isDark ? 'bg-slate-700' : 'bg-slate-800'
           }`}
         />

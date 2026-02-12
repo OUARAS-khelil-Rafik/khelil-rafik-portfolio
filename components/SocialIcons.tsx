@@ -123,9 +123,9 @@ const SocialIcons = () => {
       }}
       className="group relative"
     >
-      <div className={`p-3 rounded-full border transition-colors flex items-center justify-center ${isDark ? 'bg-slate-800/50 border-slate-700 hover:border-blue-500/50' : 'bg-white/50 border-slate-300 hover:border-blue-500/50'}`}>
+      <div className={`p-2 sm:p-3 rounded-full border transition-colors flex items-center justify-center ${isDark ? 'bg-slate-800/50 border-slate-700 hover:border-blue-500/50' : 'bg-white/50 border-slate-300 hover:border-blue-500/50'}`}>
         <link.icon
-          size={24}
+          size={20}
           color={isDark ? link.color : (link.label === 'GitHub' || link.label === 'X' ? '#0f172a' : link.color)}
         />
       </div>
@@ -133,7 +133,7 @@ const SocialIcons = () => {
         initial={{ opacity: 0, y: 10 }}
         whileHover={{ opacity: 1, y: -40 }}
         transition={{ duration: 0.2 }}
-        className={`absolute left-1/2 -translate-x-1/2 px-3 py-1 rounded-md text-sm whitespace-nowrap pointer-events-none ${isDark ? 'bg-slate-900 text-white' : 'bg-slate-900 text-white'}`}
+        className={`absolute left-1/2 -translate-x-1/2 px-2 sm:px-3 py-1 rounded-md text-xs sm:text-sm whitespace-nowrap pointer-events-none ${isDark ? 'bg-slate-900 text-white' : 'bg-slate-900 text-white'}`}
       >
         {link.label}
       </motion.div>
@@ -145,12 +145,12 @@ const SocialIcons = () => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="flex flex-col items-start gap-4"
+      className="flex flex-col items-start gap-3 sm:gap-4"
     >
-      <div className="flex items-center space-x-8">
+      <div className="flex items-center space-x-4 sm:space-x-6 md:space-x-8">
         {topRow.map((link, index) => renderIcon(link, index))}
       </div>
-      <div className="flex items-center space-x-8">
+      <div className="flex items-center space-x-4 sm:space-x-6 md:space-x-8">
         {bottomRow.map((link, index) => renderIcon(link, index + 4))}
       </div>
     </motion.div>
