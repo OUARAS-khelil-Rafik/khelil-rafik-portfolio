@@ -51,7 +51,7 @@ const Contact = () => {
             <div className="space-y-10">
                {[
                  { icon: Mail, title: "Email", lines: [EMAIL_ADDRESS, EMAIL_ADDRESS_2], href: `mailto:${EMAIL_ADDRESS}` },
-                 { icon: Phone, title: "Phone", lines: [content.contact.phone], href: "#" },
+                 { icon: Phone, title: "Phone", lines: [content.contact.phone, content.contact.phone2], href: "#" },
                  { icon: MapPin, title: "Location", lines: [content.contact.location], href: "#" }
                ].map((item, idx) => (
                  <motion.div 
@@ -118,7 +118,7 @@ const Contact = () => {
                         transition={{ delay: 0.3 }}
                         className={`text-2xl font-bold mb-2 ${isDark ? 'text-white' : 'text-slate-900'}`}
                     >
-                        Message Sent!
+                        {content.contact.successTitle}
                     </motion.h3>
                     <motion.p 
                         initial={{ opacity: 0, y: 10 }}
@@ -126,7 +126,7 @@ const Contact = () => {
                         transition={{ delay: 0.4 }}
                         className={isDark ? 'text-slate-400' : 'text-slate-600'}
                     >
-                        Thank you for reaching out. I'll get back to you shortly.
+                        {content.contact.successMessage}
                     </motion.p>
                     <motion.button 
                         initial={{ opacity: 0 }}
@@ -135,7 +135,7 @@ const Contact = () => {
                         onClick={() => setFormState('idle')} 
                         className="mt-8 text-primary hover:text-blue-400 transition-colors font-medium"
                     >
-                        ↓ Send another message
+                        {content.contact.sendAnother}
                     </motion.button>
                 </div>
               ) : (

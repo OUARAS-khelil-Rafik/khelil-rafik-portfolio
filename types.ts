@@ -83,6 +83,10 @@ export interface ContentData {
     location: string;
     email: string;
     phone: string;
+    phone2: string;
+    successTitle: string;
+    successMessage: string;
+    sendAnother: string;
   };
   footer: {
     rights: string;

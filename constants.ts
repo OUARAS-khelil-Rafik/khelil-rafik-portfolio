@@ -254,6 +254,10 @@ export const CONTENT: Record<string, ContentData> = {
       location: "Algiers, Algeria",
       email: "kikoouaras@gmail.com",
       phone: "+213 660 49 61 44",
+      phone2: "+213 662 72 56 58",
+      successTitle: "Message Sent!",
+      successMessage: "Thank you for reaching out. I'll get back to you shortly.",
+      sendAnother: "↓ Send another message",
     },
     footer: {
       rights: "All rights reserved.",
@@ -508,6 +512,10 @@ export const CONTENT: Record<string, ContentData> = {
       location: "Alger, Algérie",
       email: "kikoouaras@gmail.com",
       phone: "+213 660 49 61 44",
+      phone2: "+213 662 72 56 58",
+      successTitle: "Message Envoyé !",
+      successMessage: "Merci de m'avoir contacté. Je vous répondrai dans les plus brefs délais.",
+      sendAnother: "↓ Envoyer un autre message",
     },
     footer: {
       rights: "Tous droits réservés.",

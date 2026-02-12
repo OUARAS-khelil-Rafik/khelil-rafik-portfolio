@@ -1,6 +1,8 @@
 import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, Facebook, Instagram } from 'lucide-react';
+import { FaXTwitter, FaKaggle } from 'react-icons/fa6';
+import { SiGooglescholar } from 'react-icons/si';
 import { GITHUB_USERNAME } from '../constants';
 
 const Footer = () => {
@@ -16,12 +18,27 @@ const Footer = () => {
           </span>
         </div>
         
-        <div className="flex items-center space-x-6 mb-4 md:mb-0">
+        <div className="flex items-center space-x-4 mb-4 md:mb-0">
            <a href={`https://github.com/${GITHUB_USERNAME}`} className={`transition-colors ${isDark ? 'text-slate-400 hover:text-white' : 'text-slate-500 hover:text-slate-900'}`} title="GitHub">
               <Github size={20} />
            </a>
-           <a href="https://www.linkedin.com" className={`transition-colors ${isDark ? 'text-slate-400 hover:text-white' : 'text-slate-500 hover:text-slate-900'}`} title="LinkedIn">
+           <a href="https://www.linkedin.com/in/khelil-rafik-ouaras/" className={`transition-colors ${isDark ? 'text-slate-400 hover:text-white' : 'text-slate-500 hover:text-slate-900'}`} title="LinkedIn">
               <Linkedin size={20} />
+           </a>
+           <a href="https://www.facebook.com/OUARASKhelilRafik" className={`transition-colors ${isDark ? 'text-slate-400 hover:text-white' : 'text-slate-500 hover:text-slate-900'}`} title="Facebook">
+              <Facebook size={20} />
+           </a>
+           <a href="https://www.instagram.com/khelil_rafik_ouaras/" className={`transition-colors ${isDark ? 'text-slate-400 hover:text-white' : 'text-slate-500 hover:text-slate-900'}`} title="Instagram">
+              <Instagram size={20} />
+           </a>
+           <a href="https://x.com/Khelil_OUARAS" className={`transition-colors ${isDark ? 'text-slate-400 hover:text-white' : 'text-slate-500 hover:text-slate-900'}`} title="X">
+              <FaXTwitter size={20} />
+           </a>
+           <a href="https://www.kaggle.com/ouaraskhelilrafik" className={`transition-colors ${isDark ? 'text-slate-400 hover:text-white' : 'text-slate-500 hover:text-slate-900'}`} title="Kaggle">
+              <FaKaggle size={20} />
+           </a>
+           <a href="https://scholar.google.com/citations?hl=fr&user=v_YF4RsAAAAJ" className={`transition-colors ${isDark ? 'text-slate-400 hover:text-white' : 'text-slate-500 hover:text-slate-900'}`} title="Google Scholar">
+              <SiGooglescholar size={20} />
            </a>
            <a href="mailto:kikoouaras@gmail.com" className={`transition-colors ${isDark ? 'text-slate-400 hover:text-white' : 'text-slate-500 hover:text-slate-900'}`} title="Email">
               <Mail size={20} />
