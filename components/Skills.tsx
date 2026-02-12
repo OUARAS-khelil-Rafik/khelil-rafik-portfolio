@@ -2,6 +2,7 @@ import { motion, Variants } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
 import { useState, ReactNode } from 'react';
+import BubbleCarousel from './BubbleCarousel';
 
 // Category icons mapping
 const categoryIcons: Record<string, ReactNode> = {
@@ -53,53 +54,26 @@ const categoryIcons: Record<string, ReactNode> = {
   ),
 };
 
-// Logos that need to be inverted in dark mode (black/very dark logos)
-const darkLogos = ['Three.js', 'Express', 'Flask', 'GitHub', 'Spyder', 'Pandas', 'Next.js'];
-
 const Skills = () => {
   const { content } = useLanguage();
   const { isDark } = useTheme();
   const [activeCategory, setActiveCategory] = useState<number | null>(null);
-  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
-
-  const container: Variants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.03,
-        delayChildren: 0.1
-      }
-    }
-  };
-
-  const item: Variants = {
-    hidden: { opacity: 0, y: 20, scale: 0.8 },
-    show: { 
-      opacity: 1, 
-      y: 0,
-      scale: 1,
-      transition: { 
-        type: "spring", 
-        stiffness: 100,
-        damping: 12
-      }
-    }
-  };
 
   const cardVariants: Variants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 50, scale: 0.9 },
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
+      scale: 1,
       transition: {
-        delay: i * 0.1,
-        duration: 0.5,
-        ease: "easeOut"
+        delay: i * 0.15,
+        duration: 0.6,
+        ease: [0.25, 0.46, 0.45, 0.94]
       }
     }),
     hover: {
-      y: -8,
+      y: -10,
+      scale: 1.02,
       transition: {
         duration: 0.3,
         ease: "easeOut"
@@ -153,7 +127,7 @@ const Skills = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {content.skills.categories.map((category, idx) => (
             <motion.div
               key={idx}
@@ -165,126 +139,58 @@ const Skills = () => {
               viewport={{ once: true }}
               onMouseEnter={() => setActiveCategory(idx)}
               onMouseLeave={() => setActiveCategory(null)}
-              className={`group relative backdrop-blur-xl p-6 rounded-2xl border transition-all duration-300 cursor-pointer
+              className={`group relative backdrop-blur-xl p-6 rounded-3xl border transition-all duration-500 overflow-hidden
                 ${isDark 
-                  ? 'bg-gradient-to-br from-slate-900/80 to-slate-800/50 border-slate-700/50 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10' 
-                  : 'bg-gradient-to-br from-white/80 to-slate-50/50 border-slate-200 hover:border-blue-400/50 hover:shadow-lg hover:shadow-blue-500/10'
+                  ? 'bg-gradient-to-br from-slate-900/90 to-slate-800/60 border-slate-700/50 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20' 
+                  : 'bg-gradient-to-br from-white/90 to-slate-50/60 border-slate-200 hover:border-blue-400/50 hover:shadow-2xl hover:shadow-blue-500/15'
                 }
-                ${activeCategory === idx ? (isDark ? 'border-blue-500/50' : 'border-blue-400/50') : ''}
+                ${activeCategory === idx ? (isDark ? 'border-blue-500/50 shadow-lg shadow-blue-500/10' : 'border-blue-400/50 shadow-lg shadow-blue-500/10') : ''}
               `}
             >
+              {/* Animated background gradient */}
+              <motion.div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                style={{
+                  background: isDark
+                    ? 'radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(59, 130, 246, 0.15), transparent 40%)'
+                    : 'radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(59, 130, 246, 0.08), transparent 40%)'
+                }}
+              />
+
               {/* Category Header */}
-              <div className="flex items-center gap-3 mb-6">
+              <div className="flex items-center gap-4 mb-4 relative z-10">
                 <motion.div 
-                  className={`p-3 rounded-xl transition-colors duration-300
+                  className={`p-4 rounded-2xl transition-all duration-300
                     ${isDark 
-                      ? 'bg-gradient-to-br from-blue-500/20 to-purple-500/20 text-blue-400 group-hover:from-blue-500/30 group-hover:to-purple-500/30' 
-                      : 'bg-gradient-to-br from-blue-500/10 to-purple-500/10 text-blue-600 group-hover:from-blue-500/20 group-hover:to-purple-500/20'
+                      ? 'bg-gradient-to-br from-blue-500/20 to-purple-500/20 text-blue-400 group-hover:from-blue-500/30 group-hover:to-purple-500/30 group-hover:shadow-lg group-hover:shadow-blue-500/20' 
+                      : 'bg-gradient-to-br from-blue-500/10 to-purple-500/10 text-blue-600 group-hover:from-blue-500/20 group-hover:to-purple-500/20 group-hover:shadow-lg group-hover:shadow-blue-500/10'
                     }`}
-                  whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
-                  transition={{ duration: 0.5 }}
+                  whileHover={{ rotate: [0, -15, 15, 0], scale: 1.15 }}
+                  transition={{ duration: 0.6 }}
                 >
                   {categoryIcons[category.icon] || categoryIcons.code}
                 </motion.div>
-                <h3 className={`text-lg font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>
-                  {category.title}
-                </h3>
+                <div>
+                  <h3 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                    {category.title}
+                  </h3>
+                  <p className={`text-sm ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
+                    {category.skills.length} technologies
+                  </p>
+                </div>
               </div>
-              
-              {/* Skills Grid with Icons */}
-              <motion.div 
-                variants={container}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true }}
-                className="grid grid-cols-3 gap-3"
-              >
-                {category.skills.map((skill, sIdx) => (
-                  <motion.div
-                    key={sIdx}
-                    variants={item}
-                    onMouseEnter={() => setHoveredSkill(`${idx}-${sIdx}`)}
-                    onMouseLeave={() => setHoveredSkill(null)}
-                    className="relative group/skill"
-                  >
-                    <motion.div
-                      whileHover={{ 
-                        scale: 1.15,
-                        rotate: [0, -5, 5, 0],
-                      }}
-                      whileTap={{ scale: 0.95 }}
-                      className={`flex flex-col items-center justify-center p-3 rounded-xl transition-all duration-300 cursor-pointer
-                        ${isDark 
-                          ? 'bg-slate-800/50 hover:bg-slate-700/80' 
-                          : 'bg-slate-100/80 hover:bg-white'
-                        }
-                        ${hoveredSkill === `${idx}-${sIdx}` ? 'shadow-lg' : ''}
-                      `}
-                      style={{
-                        boxShadow: hoveredSkill === `${idx}-${sIdx}` 
-                          ? `0 8px 30px ${skill.color}30` 
-                          : 'none'
-                      }}
-                    >
-                      <motion.img
-                        src={skill.icon}
-                        alt={skill.name}
-                        className="w-8 h-8 object-contain"
-                        loading="lazy"
-                        style={{
-                          filter: isDark && darkLogos.includes(skill.name) 
-                            ? 'invert(1) brightness(2) grayscale(30%)' 
-                            : 'grayscale(30%)'
-                        }}
-                        whileHover={{ 
-                          filter: isDark && darkLogos.includes(skill.name) 
-                            ? 'invert(1) brightness(2) grayscale(0%)' 
-                            : 'grayscale(0%)',
-                          transition: { duration: 0.2 }
-                        }}
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.style.display = 'none';
-                        }}
-                      />
-                      <span className={`text-[10px] mt-2 font-medium text-center leading-tight line-clamp-1
-                        ${isDark ? 'text-slate-400 group-hover/skill:text-white' : 'text-slate-600 group-hover/skill:text-slate-900'}
-                      `}>
-                        {skill.name}
-                      </span>
-                    </motion.div>
-                    
-                    {/* Tooltip */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 10, scale: 0.9 }}
-                      animate={{ 
-                        opacity: hoveredSkill === `${idx}-${sIdx}` ? 1 : 0,
-                        y: hoveredSkill === `${idx}-${sIdx}` ? 0 : 10,
-                        scale: hoveredSkill === `${idx}-${sIdx}` ? 1 : 0.9
-                      }}
-                      className={`absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap z-50 pointer-events-none
-                        ${isDark ? 'bg-slate-700 text-white' : 'bg-slate-800 text-white'}
-                      `}
-                      style={{ borderColor: skill.color }}
-                    >
-                      {skill.name}
-                      <div 
-                        className={`absolute left-1/2 -translate-x-1/2 -bottom-1 w-2 h-2 rotate-45
-                          ${isDark ? 'bg-slate-700' : 'bg-slate-800'}
-                        `}
-                      />
-                    </motion.div>
-                  </motion.div>
-                ))}
-              </motion.div>
 
-              {/* Card glow effect on hover */}
-              <motion.div
-                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"
-                style={{
-                  background: `radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${isDark ? 'rgba(59, 130, 246, 0.1)' : 'rgba(59, 130, 246, 0.05)'}, transparent 40%)`
-                }}
+              {/* Bubble Carousel */}
+              <BubbleCarousel 
+                skills={category.skills}
+                isDark={isDark}
+                categoryIndex={idx}
               />
+
+              {/* Decorative elements */}
+              <div className={`absolute top-4 right-4 w-20 h-20 rounded-full blur-3xl transition-opacity duration-500 pointer-events-none ${
+                activeCategory === idx ? 'opacity-50' : 'opacity-0'
+              }`} style={{ background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)' }} />
             </motion.div>
           ))}
         </div>

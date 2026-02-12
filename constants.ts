@@ -88,9 +88,6 @@ export const CONTENT: Record<string, ContentData> = {
             'Ranked 1st in specialty with excellent academic performance.',
             "Thesis: Assessment of Ooredoo's Competitive Position using AI.",
             'Relevant Coursework: Machine Learning, Deep Learning, Big Data, Data Mining.',
-            'Developed a script for OCR image processing tailored to Arabic characters and submitted a conference paper titled "Bridging the Gap: Fusing CNNs and Transformers to Decode the Elegance of Handwritten Arabic Script".',
-            'Developed a medical imaging script titled "HEMORRHAGE AI: Transforming Intracranial Hemorrhage Diagnosis with Machine Learning and Deep Learning".',
-            'Developed a web application for sentiment analysis of Arabic tweets named "IHSAS (إحساس)," accompanied by a scientific article.'
           ]
         },
         {
@@ -345,9 +342,6 @@ export const CONTENT: Record<string, ContentData> = {
             'Classé 1er de la spécialité avec d\'excellentes performances.',
             "Mémoire : Évaluation de la position concurrentielle d'Ooredoo via l'IA.",
             'Cours : Machine Learning, Deep Learning, Big Data, Data Mining.',
-            'Développement d\'un script de traitement OCR d\'images adapté aux caractères arabes et soumission d\'un article de conférence intitulé "Bridging the Gap: Fusing CNNs and Transformers to Decode the Elegance of Handwritten Arabic Script".',
-            'Développement d\'un script d\'imagerie médicale intitulé "HEMORRHAGE AI: Transforming Intracranial Hemorrhage Diagnosis with Machine Learning and Deep Learning".',
-            'Développement d\'une application web d\'analyse de sentiments des tweets arabes nommée "IHSAS (إحساس)", accompagnée d\'un article scientifique.'
           ]
         },
         {

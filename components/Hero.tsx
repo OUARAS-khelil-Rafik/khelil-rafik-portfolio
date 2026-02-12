@@ -146,7 +146,6 @@ const Hero = () => {
             transition={{ duration: 0.5 }}
             className="flex items-center space-x-3 mb-8"
           >
-            <span className="h-px w-10 bg-gradient-to-r from-primary to-transparent"></span>
             <span className="text-primary font-medium tracking-widest uppercase text-sm">
               {content.hero.greeting}
             </span>

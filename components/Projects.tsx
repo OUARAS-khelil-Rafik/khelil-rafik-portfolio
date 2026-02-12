@@ -136,7 +136,6 @@ const Projects = () => {
           className="mb-16 md:mb-24"
         >
           <div className="flex items-center space-x-2 mb-4">
-            <span className="h-px w-8 bg-primary"></span>
             <span className="text-primary font-medium tracking-wide uppercase text-sm">04.</span>
           </div>
           <h2 className={`text-4xl md:text-5xl font-bold font-display mt-2 mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>{content.projects.title}</h2>
