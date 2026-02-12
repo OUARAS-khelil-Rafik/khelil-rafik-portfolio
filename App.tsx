@@ -11,6 +11,7 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ScrollZoomWrapper from './components/ScrollZoomWrapper';
+import ChatBot from './components/ChatBot';
 
 function AppContent() {
   const { isDark } = useTheme();
@@ -43,6 +44,7 @@ function AppContent() {
         </ScrollZoomWrapper>
       </main>
       <Footer />
+      <ChatBot />
     </div>
   );
 }
