@@ -82,7 +82,7 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className={`py-32 relative transition-colors duration-300 overflow-hidden ${isDark ? 'bg-[#0b1120]' : 'bg-slate-100'}`}>
+    <section id="skills">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
